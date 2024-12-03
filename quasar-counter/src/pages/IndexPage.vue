@@ -13,6 +13,7 @@
     <div class="col text-center">
       <q-btn
       @click="decreaseCouter"
+      v-touch-repeat:300:300:300:300:50.mouse="decreaseCouter"
        icon="remove_circle_outline"
        size="xl"
        round 
@@ -24,6 +25,7 @@
     <div class="col text-center">
       <q-btn
       @click="increaseCouter"
+      v-touch-repeat:300:300:300:300:50.mouse="increaseCouter"
       icon="add_circle_outline"
       size="xl"
       round 
