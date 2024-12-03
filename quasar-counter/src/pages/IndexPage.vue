@@ -2,8 +2,9 @@
   <q-page class="flex flex-center text-white">
     <div class="row">
       <q-input
+      v-model="data.name"
        input-class="text-center text-h5 text-white"
-       color="teal"
+       color="orange"
        placeholder="Counter"
        filled 
         />
@@ -11,22 +12,27 @@
     <div class="row full-width items-center">
     <div class="col text-center">
       <q-btn
+      @click="decreaseCouter"
        icon="remove_circle_outline"
        size="xl"
        round 
        />
     </div>
-    <div class="col text-center text-h2">23</div>
+    <div class="col text-center text-h2">
+       {{ data.counter }}
+      </div>
     <div class="col text-center">
       <q-btn
-       icon="add_circle_outline"
-       size="xl"
-       round 
+      @click="increaseCouter"
+      icon="add_circle_outline"
+      size="xl"
+      round 
        />
     </div>
   </div>
   <div class="row">
     <q-btn
+    @click="resetCouter"
        icon="restart_alt"
        size="xl"
        round 
@@ -44,4 +50,25 @@
 
 <script setup>
 
+// Imports
+import { reactive } from 'vue';
+
+// Data
+const data = reactive({
+  counter: 0,
+  name: ''
+})
+
+// Counter methods
+const increaseCouter = () => {
+  data.counter++
+}
+
+const decreaseCouter = () => {
+  if (data.counter > 0) data.counter--
+}
+
+const resetCouter = () => {
+  data.counter = 0
+}
 </script>
