@@ -11,6 +11,17 @@
        filled 
         />
     </div>
+    <!--Modificacion nuevo campo para elegir el incremento/decremento-->
+    <div class="row"> 
+      <q-input
+        v-model="data.incrementValue"
+        type="number"
+        input-class="text-center text-h5 text-white"
+        color="orange"
+        placeholder="Elije el valor"
+        filled 
+      />
+    </div>
     <div class="row full-width items-center">
     <div class="col text-center">
       <q-btn
@@ -64,7 +75,8 @@ const $q = useQuasar()
 // Data
 const data = reactive({
   counter: 0,
-  name: ''
+  name: '',
+  incrementValue: 1 // Nuevo: valor del incremento (por defecto 1)
 })
 
 const savedData = $q.localStorage.getItem('data')
@@ -76,11 +88,14 @@ watch(data, value => {
 
 // Counter methods
 const increaseCouter = () => {
-  data.counter++
+  const increment = parseInt(data.incrementValue) // Usar el valor del input o 1 como predeterminado
+  data.counter+= increment
 }
 
 const decreaseCouter = () => {
-  if (data.counter > 0) data.counter--
+  const decrement = parseInt(data.incrementValue) // Usar el valor del input o 1 como predeterminado
+  if (data.counter > 0) 
+  data.counter-= decrement
 }
 
 const resetCouter = () => {
